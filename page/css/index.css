@@ -1,8 +1,109 @@
 .every_day {
     background-color: #ffffff;
-    width: 100%;
+    width: 95%;
     text-align: left;
     border-radius: 5px;
-    padding: 10px 20px;
+    padding: 10px 18px;
     box-shadow: 3px 4px 3px #888888;
 }
+
+.article_list {
+    margin-top: 15px;
+    width: 100%;
+}
+
+.article_title {
+    display: inline-block;
+    font-size: 20px;
+    text-decoration: none;
+    color: #13102d;
+    padding: 20px 10px 5px 10px;
+    cursor: pointer;
+}
+
+.article_title:hover {
+    color: #337a2d;
+}
+
+.article {
+    margin-top: 15px;
+    display: inline-block;
+    background-color: #ffffff;
+    width: 100%;
+    border-radius: 5px;
+    /* padding: 10px 20px; */
+    box-shadow: 1px 1px 1px #888888;
+    text-align: left;
+    overflow: hidden;
+    
+}
+
+.article_content {
+    font-size: 14px;
+    color: #13102b;
+    padding: 0 10px 20px 10px;
+    word-break: break-all;
+    word-wrap: break-word;
+    overflow: hidden;
+}
+
+.article_foot {
+    background-color: #1f1f1f;
+    color: #ffffff;
+    padding: 5px 10px;
+    font-size: 14px;
+}
+
+/* .right_module {
+    width: 100%;
+    background-color: #1f1f1f;
+    text-align: left;
+    border-radius: 5px;
+    color: #ffffff;
+    padding: 0 15px 25px 15px;
+    margin-bottom: 20px;
+}
+
+.module_title {
+    color: dodgerblue;
+    font-size: 14px;
+    padding: 15px 5px 15px 0;  
+} */
+
+/* .right_module>a {
+    text-decoration: none;
+    font-size: 14px;
+    color: dodgerblue;
+    margin-right: 5px;
+}
+
+.right_module>ul>li {
+    list-style: none;
+    color: #ffffff;
+    padding: 8px 0;
+}
+
+.right_module>ul>li>a {
+    text-decoration: none;
+    font-size: 14px;
+    color: #ffffff;
+}
+
+.right_module>ul>li>div {
+    padding: 5px 0;
+}
+
+.right_module>ul>li>span {
+    font-size: 14px;
+    color: #ffffff;
+}
+
+.right_module>ul>li>p {
+    font-size: 14px;
+    color: #777777;
+}
+
+.pull_right {
+    position: absolute;
+    right: 15px;
+} */
