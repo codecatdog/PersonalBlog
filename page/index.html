@@ -6,6 +6,7 @@
     <title>个人博客</title>
     <link rel="stylesheet" href="./css/base.css">
     <link rel="stylesheet" href="./css/index.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
 </head>
 <body>
     <header class="header">
@@ -25,69 +26,43 @@
     </header>
     <div class="content">
         <div class="content_left">
-            <div class="every_day">
+            <div class="every_day" id="every_day">
                 <span>每日一句</span>
-                <p>what are you doing?</p>
+                <p v-html="getContent">what are you doing?</p>
             </div>
-            <div class="article_list">
-                <div class="article">
-                    <a class="article_title">时间哈多久啊是的时间</a>
+            <div class="article_list" id="article_list">
+                <div class="article" v-for="article in articleList">
+                    <a v-bind:href="article.link" class="article_title">{{article.title}}</a>
                     <p class="article_content">
-                        回到房间火箭发射烦烦烦的设计速度就是快思考角度看数据的速度加快速度加快伤口的说的就是肯定就是角度上看看建设靠大家肯德基李开复斤斤计较斤斤计较急急急急急急急急急
+                        {{article.content}}
                     </p>
                     <div class="article_foot">
-                        是否合适就大幅回升空间| 建设靠大家| 都是进口的
+                        发布于{{article.date}} | 浏览{{article.views}} | Tags: {{article.tags}}
                     </div>
                 </div>
             </div>
         </div>
         <div class="content_right">
-            <div class="right_module">
+            <div class="right_module" id="random_tags">
                 <div class="module_title">随机标签云</div>
-                <a href="/">asd</a>
-                <a href="/">asd</a>
-                <a href="/">asd</a>
-                <a href="/">asd</a>
-                <a href="/">asd</a>
+                <a href="/" v-for="tag in tags" v-bind:style="{color: randomColor(), fontSize:randomSize()}">{{tag}}</a>
             </div>
-            <div class="right_module">
+            <div class="right_module" id="new_hot">
                 <div class="module_title">最近热门</div>
                 <ul>
-                    <li><a href="/">事件的江湖的</a></li>
-                    <li><a href="/">事件的江湖的</a></li>
-                    <li><a href="/">事件的江湖的</a></li>
-                    <li><a href="/">事件的江湖的</a></li>
-                    <li><a href="/">事件的江湖的</a></li>
+                    <li v-for="temp in titleList"><a v-bind:href="temp.link">{{temp.title}}</a></li>
                 </ul>
             </div>
-            <div class="right_module">
+            <div class="right_module" id="new_comments">
                 <div class="module_title">最新评论</div>
                 <ul>
-                    <li>
+                    <li v-for="comment in commentsList">
                         <div>
-                            <span>username</span>
-                            <span class="pull_right">time</span>
+                            <span>{{comment.name}}</span>
+                            <span class="pull_right">{{comment.date}}</span>
                         </div>
                         <p>
-                            sorry...
-                        </p>
-                    </li>
-                    <li>
-                        <div>
-                            <span>username</span>
-                            <span class="pull_right">time</span>
-                        </div>
-                        <p>
-                            sorry...
-                        </p>
-                    </li>
-                    <li>
-                        <div>
-                            <span>username</span>
-                            <span class="pull_right">time</span>
-                        </div>
-                        <p>
-                            sorry...
+                            {{comment.comment}}
                         </p>
                     </li>
                 </ul>
@@ -117,5 +92,7 @@
         </ul>
         <p>copyright@.....</p>
     </footer>
+    <script src="./js/index.js"></script>
+    <script src="./js/base.js"></script>
 </body>
 </html>
