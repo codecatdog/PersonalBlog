@@ -22,6 +22,19 @@
     function submit() {
       alert("提交")
       var content = $("#editor").html();
+      $.ajax({
+        url: "/editEveryday",
+        method: "post",
+        data: content,
+        success: function(res) {
+          var result = JSON.parse(res);
+          alert(result.msg);
+          $("#editor").html("");
+        },
+        error: function(res) {
+          console.log(res)
+        }
+      })
 
     }
   </script>
