@@ -25,6 +25,9 @@ var everyDay = new Vue({
 var articleList = new Vue({
     el: "#article_list",
     data: {
+        page: 1, 
+        pageSize: 5,
+        // count: 100,
         articleList: [
             {
                 title: " this is a title.",
@@ -56,9 +59,18 @@ var articleList = new Vue({
         ]
     },
     computed: {
-
+        getPage: function() {
+            return function(page, pageSize) {
+                axios({
+                    method: "get",
+                    url: "/queryBlogByPage?page=" + (page - 1) + "&pageSize=" + pageSize
+                }).then(function(res) {
+                    console.log(res)
+                })
+            }
+        }
     },
     created: function() {
-
+        this.getPage(this.page, this.pageSize);
     }
 })

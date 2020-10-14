@@ -1,9 +1,9 @@
 
 var dbutil = require("./DBUtil");
 
-function insertEveryday(content, ctime, success) {
-    var insertSql = "insert into every_day (`content`, `ctime`) values (?, ?)";
-    var params = [content, ctime];
+function insertBlog(title, content, tags, views, ctime, utime, success) {
+    var insertSql = "insert into blog (`title`, `content`, `tags`,`views`,`ctime`,`utime`) values (?, ?, ?, ?, ?, ?);";
+    var params = [title, content, tags, views, ctime, utime];
 
     var connection = dbutil.createConnection();
     connection.connect();
@@ -17,8 +17,8 @@ function insertEveryday(content, ctime, success) {
     connection.end();
 }
 
-function queryEveryday(success) {
-    var querySql = "select * from every_day order by id desc limit 1";
+function queryBlog(success) {
+    var querySql = "select * from blog order by id desc limit 1";
     var params = [];
 
     var connection = dbutil.createConnection();
@@ -33,5 +33,5 @@ function queryEveryday(success) {
     connection.end();
 }
 
-module.exports.insertEveryday = insertEveryday;
-module.exports.queryEveryday = queryEveryday;
+module.exports.insertBlog = insertBlog;
+module.exports.queryBlog = queryBlog;
