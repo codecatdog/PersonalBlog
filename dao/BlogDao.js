@@ -17,9 +17,25 @@ function insertBlog(title, content, tags, views, ctime, utime, success) {
     connection.end();
 }
 
-function queryBlog(success) {
-    var querySql = "select * from blog order by id desc limit 1";
+function queryBlogCount(success) {
+    querySql = "select count(1) as count from blog";
     var params = [];
+    
+    var connection = dbutil.createConnection();
+    connection.connect();
+    connection.query(querySql, params, function(error, result) {
+        if (error == null) {
+            success(result);
+        } else {
+            console.log(error);
+        }
+    })
+    connection.end();
+}
+
+function queryBlogByPage(page, pageSize, success) {
+    var querySql = "select * from blog order by id desc limit ?, ?";
+    var params = [page * pageSize, pageSize];
 
     var connection = dbutil.createConnection();
     connection.connect();
@@ -34,4 +50,5 @@ function queryBlog(success) {
 }
 
 module.exports.insertBlog = insertBlog;
-module.exports.queryBlog = queryBlog;
+module.exports.queryBlogByPage = queryBlogByPage;
+module.exports.queryBlogCount = queryBlogCount;
